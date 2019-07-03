@@ -1,0 +1,104 @@
+<html>
+<head>
+    
+    <style>
+        
+        body {
+            background-color: white;
+        }
+        
+        .audio {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        audio {
+            width: 100%;
+        }
+        
+        #button {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 50%;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        #button p {
+            font-size: 85px;
+            color: white;
+        }
+        
+        #title {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        #title p {
+            font-size: 35px;
+            color: black;
+        }
+        
+        #completeNotification {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            margin-top: 50px;
+            visibility: hidden;
+        }
+        
+        #completeNotification p {
+            font-size: 35px;
+            color: black;
+        }
+        
+    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
+    <script>
+        window.onload = function(){
+            if (annyang) {
+                var commands = {
+                    'Yes': function() {
+                        document.getElementById("button").style.backgroundColor = "green";
+                        document.getElementById("title").style.visibility = "hidden";
+                        document.getElementById("completeNotification").style.visibility = "visible";
+                    }
+                };
+                annyang.addCommands(commands);
+                annyang.start(); 
+            }
+        }
+    </script>   
+    
+</head>
+
+<body>
+    
+    <div class="audio">
+        <iframe src="voice.mp3" allow="autoplay" style="display:none" id="iframeAudio"></iframe> 
+    </div>
+    
+    <div id="title">
+        <p>Step 1: Check the tire pressure. Say "Yes" when done!</p>
+    </div>
+    
+    <div id="button">
+        <p id="complete">X</p>
+    </div>
+    
+    <div id="completeNotification">
+        <p>Step 1 is complete!</p>
+    </div>
+
+    
+</body>
+
+
+</html>
